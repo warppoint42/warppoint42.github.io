@@ -8,12 +8,12 @@
 body {font-family: Arial, Helvetica, sans-serif;}
 
 #myImg {
-  border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
-  background: 50% 50% no-repeat;
-  width: 250px;
-  height: 250px;
+  object-fit: cover;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
 }
 
 #myImg:hover {opacity: 0.7;}
@@ -39,7 +39,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <div class="w3-row-padding w3-center">
   <div class="w3-col s6">
-    <img class="w3-image" id="myImg" src="lathrop.jpg" onclick="document.getElementById('lathropModal').style.display='block'">
+    <img class="w3-image w3-round" id="myImg" src="lathrop.jpg" onclick="document.getElementById('lathropModal').style.display='block'">
     <h2>Lathrop</h2>
   </div>
 
