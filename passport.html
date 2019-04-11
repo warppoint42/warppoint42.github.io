@@ -14,6 +14,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
   width: 200px;
   height: 200px;
   overflow: hidden;
+  filter: gray; /* IE6-9 */
+  -webkit-filter: grayscale(1); /* Google Chrome, Safari 6+ & Opera 15+ */
+  filter: grayscale(1); /* Microsoft Edge and Firefox 35+ */
 }
 
 #myImg:hover {opacity: 0.7;}
@@ -25,6 +28,15 @@ body {font-family: Arial, Helvetica, sans-serif;}
 <div class="w3-container w3-orange w3-center" style="margin-bottom: 35px">
   <h1>HvZ Passport</h1> 
   <p>Brains!</p> 
+</div>
+
+<div id="lockedModal" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-container w3-center">
+      <span onclick="document.getElementById('lockedModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+      <p>Locked!</p>
+    </div>
+  </div>
 </div>
 
 <div id="lathropModal" class="w3-modal">
@@ -39,7 +51,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <div class="w3-row-padding w3-center">
   <div class="w3-col s6">
-    <img class="w3-image w3-round" id="myImg" src="lathrop.jpg" onclick="document.getElementById('lathropModal').style.display='block'">
+    <img class="w3-image w3-round lathrop" id="myImg" src="lathrop.jpg" onclick="document.getElementById('lockedModal').style.display='block'">
     <h2>Lathrop</h2>
   </div>
 
@@ -53,10 +65,65 @@ body {font-family: Arial, Helvetica, sans-serif;}
   <div class="w3-col s6">
     <h2>Tokyo</h2>
     <p>Tokyo is the capital of Japan.</p>
-    <p>It is the center of the Greater Tokyo Area,
+    <p id="log">It is the center of the Greater Tokyo Area,
     and the most populous metropolitan area in the world.</p>
   </div>
 </div>
+
+
+<script language="JavaScript">
+
+  var stamps = ["Lathrop"];
+
+  function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+  }
+
+  function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for(var i = 0; i <ca.length; i++) {
+     var c = ca[i];
+     while (c.charAt(0) == ' ') {
+       c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+       return c.substring(name.length, c.length);
+      }
+    }
+   return "";
+  }
+
+  function stamp()
+  {
+    var parameters = location.search.substring(1).split("&");
+
+    var temp = parameters[0].split("=");
+    l = decodeURI(temp[1]);
+
+    if(decodeURI(temp[0])=="stamp"){
+      setCookie(l, "seen", 1);
+    }    
+  }
+  function open(){
+    var arraylength = stamps.length;
+
+    for(var i = 0; i < arrayLength; i++){
+      var c = getCookie(stamps[i]);
+      if(c == "seen"){
+        document.getElementById("log").innerHTML = "yayyyyyy" + stamps[i];
+      }
+    }  
+  }
+stamp();
+open();
+
+</script>
+
 
 </body>
 </html>
