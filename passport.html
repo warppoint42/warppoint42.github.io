@@ -66,7 +66,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <h2>Tokyo</h2>
     <p>Tokyo is the capital of Japan.</p>
     <p id="log">It is the center of the Greater Tokyo Area,
-    and the most populous metropolitan area in the world, v2</p>
+    and the most populous metropolitan area in the world, v3</p>
   </div>
 </div>
 
@@ -112,7 +112,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
   function open(){
     var arraylength = stamps.length;
 
-    for(var i = 0; i < arrayLength; i++){
+    var i;
+    for(i = 0; i < arrayLength; i++){
       var c = getCookie(stamps[i]);
       document.getElementById("log").innerHTML = "yayyyyyy" + c;
       if(c == "seen"){
