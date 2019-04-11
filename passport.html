@@ -112,7 +112,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
   function open(){
     var arraylength = stamps.length;
     
-    for(var i = 0; i <= stamps.length; i++){
+    for(var i = 0; i < stamps.length; i++){
       var c = getCookie(stamps[i]);
       if(c == "seen"){
         document.getElementById("log").innerHTML = "yayyyyyy" + stamps[i];
