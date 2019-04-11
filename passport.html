@@ -66,7 +66,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <h2>Tokyo</h2>
     <p>Tokyo is the capital of Japan.</p>
     <p id="log">It is the center of the Greater Tokyo Area,
-    and the most populous metropolitan area in the world, v3</p>
+    and the most populous metropolitan area in the world, v99</p>
   </div>
 </div>
 
@@ -116,6 +116,9 @@ body {font-family: Arial, Helvetica, sans-serif;}
       var c = getCookie(stamps[i]);
       if(c == "seen"){
         document.getElementById("log").innerHTML = "yayyyyyy" + stamps[i];
+      }
+      else{
+        document.getElementById("log").innerHTML = "yayyyyyy" + c + "fail" + stamps[i];
       }
     }  
   }
