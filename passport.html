@@ -21,6 +21,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 #myImg:hover {opacity: 0.7;}
 
+
 </style>
 
 <body>
@@ -43,37 +44,74 @@ body {font-family: Arial, Helvetica, sans-serif;}
   <div class="w3-modal-content">
     <div class="w3-container">
       <span onclick="document.getElementById('lathropModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-      <p>Porpoises in the water.</p>
-      <p>Some text. Some text. Some text.</p>
+      <p>Address</p>
+      <p>518 Memorial Way Stanford, CA 94305</p>
+    </div>
+  </div>
+</div>
+
+<div id="mcmurtryModal" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-container">
+      <span onclick="document.getElementById('mcmurtryModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+      <p>McMurtry!</p>
+      <p>doooodooodooo</p>
+    </div>
+  </div>
+</div>
+
+<div id="cantorModal" class="w3-modal">
+  <div class="w3-modal-content">
+    <div class="w3-container">
+      <span onclick="document.getElementById('cantorModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+      <p>Serving the Stanford campus, the Bay Area community, and visitors from around the world, the Cantor Arts Center provides an outstanding cultural experience for visitors of all ages. Founded when the university opened in 1891, the historic museum was expanded and renamed in 1999 for lead donors Iris and B. Gerald Cantor. The Cantor’s collection spans 5,000 years and includes more than 38,000 works of art from around the globe. These include our renowned collection of Rodin bronze sculptures, which are displayed inside the museum as well as in our outdoor Rodin Sculpture Garden. With 24 galleries and more than 15 special exhibitions each year, the Cantor is an established resource for teaching and research on campus. Free admission, tours, lectures, and family activities make the Cantor one of the most visited university art museums in the country.</p>
     </div>
   </div>
 </div>
 
 <div class="w3-row-padding w3-center">
   <div class="w3-col s6">
-      <img class="w3-image w3-round lathrop" id="myImg" src="lathrop.jpg" onclick="document.getElementById('lockedModal').style.display='block'">
+      <img class="w3-image w3-round-xxlarge lathrop" id="myImg" src="brain_lock.png" onclick="document.getElementById('lockedModal').style.display='block'">
     <h2>Lathrop</h2>
   </div>
 
   <div class="w3-col s6">
-    <h2>Paris</h2>
-    <p>Paris is the capital of France.</p> 
-    <p>The Paris area is one of the largest population centers in Europe,
-    with more than 12 million inhabitants.</p>
+      <img class="w3-image w3-round-xxlarge mcmurtry" id="myImg" src="brain_lock.png" onclick="document.getElementById('lockedModal').style.display='block'">
+    <h2>McMurtry</h2>
   </div>
 
   <div class="w3-col s6">
-    <h2>Tokyo</h2>
-    <p>Tokyo is the capital of Japan.</p>
-    <p id="log">It is the center of the Greater Tokyo Area,
-    and the most populous metropolitan area in the world, v99</p>
+      <img class="w3-image w3-round-xxlarge cantor" id="myImg" src="brain_lock.png" onclick="document.getElementById('lockedModal').style.display='block'">
+    <h2>Cantor</h2>
   </div>
 </div>
 
 
 <script language="JavaScript">
 
-  var stamps = ["lathrop"];
+  var stamps = ["lathrop", "mcmurtry", "cantor"];
+  var quiz = [true, false, true];
+
+  var questions = {
+    "lathrop": [{ 
+        question: 'Brains? (the answer is yes)',
+        answer: 'yes',
+        affirm: 'Yay! You got it right!',
+        rebuttal: 'Try again.'
+    },
+    {
+        question: 'The answe is no.',
+        answer: 'no',
+        affirm: 'Good job!',
+        rebuttal: 'Try again.'
+    }],
+    "cantor": [{
+      question: 'First Fridays? (the answer is yes)',
+      answer: 'yes',
+      affirm: 'Yay! You got it right!',
+      rebuttal: 'Try again.'
+    }]
+  };
 
   function setCookie(cname, cvalue, exdays) {
     var d = new Date();
@@ -109,16 +147,42 @@ body {font-family: Arial, Helvetica, sans-serif;}
       setCookie(l, "seen", 1);
     }    
   }
+
+  //https://stackoverflow.com/questions/19372498/please-help-writing-a-javascript-quiz-using-prompt-and-multiple-if-then-statemen
+  function quiz(name){
+    for (var i = 0, l = questions[name].length; i < l; i++) {
+      answer = prompt(questions[name][i].question);
+
+      // I do not support manipulating a loop counter mid-loop, but it's for an example.
+      if (answer !== questions[name][i].answer) {
+          alert(questions[name][i].rebuttal);
+          i--;
+          return;
+      } else {
+          alert(questions[name][i].affirm);
+      }
+    }
+    //passed
+    setCookie(name, "completed", 1);
+    document.getElementsByClassName(name)[0].style.filter = "none";
+    document.getElementsByClassName(name)[0].setAttribute("style","-webkit-filter:grayscale(" + 0 + "%)");
+    document.getElementsByClassName(name)[0].onclick = function(){document.getElementById(name + 'Modal').style.display='block';};
+  }
   function open(){
     var arraylength = stamps.length;
     
     for(var i = 0; i < stamps.length; i++){
-      var c = getCookie(stamps[i]);
+      var name = stamps[i];
+      var c = getCookie(name);
       if(c == "seen"){
-      // if(true){
-        document.getElementsByClassName(stamps[i])[0].style.filter = "none";
-        document.getElementsByClassName(stamps[i])[0].setAttribute("style","-webkit-filter:grayscale(" + 0 + "%)");
-        document.getElementById("log").innerHTML = "yayyyyyyx" + stamps[i];
+        document.getElementsByClassName(name)[0].src = stamps[i] + ".jpg";
+        document.getElementsByClassName(name)[0].onclick = function(){quiz(name);};
+      }
+      if(c == "completed" || (c == "seen" && !quiz[i])){
+        document.getElementsByClassName(name)[0].src = stamps[i] + ".jpg";
+        document.getElementsByClassName(name)[0].style.filter = "none";
+        document.getElementsByClassName(name)[0].setAttribute("style","-webkit-filter:grayscale(" + 0 + "%)");
+        document.getElementsByClassName(name)[0].onclick = function(){document.getElementById(name + 'Modal').style.display='block';};
       }
     }  
   }
