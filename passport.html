@@ -178,7 +178,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
         document.getElementsByClassName(name)[0].src = stamps[i] + ".jpg";
         document.getElementsByClassName(name)[0].onclick = function(){quiz(name);};
       }
-      if(c == "completed" || (c == "seen" && !quiz[i]) || true){
+      if(c == "completed" || (c == "seen" && !quiz[i])){
         document.getElementsByClassName(name)[0].src = stamps[i] + ".jpg";
         document.getElementsByClassName(name)[0].style.filter = "none";
         document.getElementsByClassName(name)[0].setAttribute("style","-webkit-filter:grayscale(" + 0 + "%)");
