@@ -174,7 +174,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     for(var i = 0; i < stamps.length; i++){
       var name = stamps[i];
       var c = getCookie(name);
-      if(c == "seen"){
+      if(c == "seen" && quiz[i]){
         document.getElementsByClassName(name)[0].src = stamps[i] + ".jpg";
         document.getElementsByClassName(name)[0].onclick = function(){quiz(name);};
       }
