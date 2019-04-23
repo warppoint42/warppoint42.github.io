@@ -58,6 +58,26 @@ body {font-family: Arial, Helvetica, sans-serif;}
     </div>
   </div>
 
+  <div id="bingModal" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('lathropModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Address</p>
+        <p>518 Memorial Way Stanford, CA 94305</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="crothersModal" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('lathropModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Address</p>
+        <p>518 Memorial Way Stanford, CA 94305</p>
+      </div>
+    </div>
+  </div>
+
   <!-- <div id="mcmurtryModal" class="w3-modal">
     <div class="w3-modal-content">
       <div class="w3-container">
@@ -124,14 +144,26 @@ body {font-family: Arial, Helvetica, sans-serif;}
   document.getElementById(tabName).style.display = "block";  
 }
 
-  var stamps = [];
-  var quiz = [];
+  var stamps = ['lathrop', 'bing', 'crothers'];
+  var quiz = [false, false, false];
 
   var questions = {
     "lathrop": [{ 
-        question: 'This folder is locked with a password.',
+        question: 'This folder is locked with a password (11 letters long).',
         answer: 'whistleblow',
-        affirm: 'Folder Unlocked!',
+        affirm: 'Folder unlocked!',
+        rebuttal: 'Try again.'
+    }],
+    "crothers": [{ 
+        question: 'This folder is locked with a password.',
+        answer: 'test',
+        affirm: 'Folder unlocked!',
+        rebuttal: 'Try again.'
+    }],
+    "bing": [{ 
+        question: 'This folder is locked with a password.',
+        answer: 'test',
+        affirm: 'Folder unlocked!',
         rebuttal: 'Try again.'
     }],
     "cantor": [{
@@ -141,7 +173,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
       rebuttal: 'Try again.'
     },
     {
-      question: 'First Fridays? (the answer is yes)',
+      question: 'Question 2? (the answer is yes)',
       answer: 'yes',
       affirm: 'Yay! You got it right!',
       rebuttal: 'Try again.'
