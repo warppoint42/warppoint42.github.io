@@ -93,6 +93,16 @@ body {font-family: Arial, Helvetica, sans-serif;}
     </div>
   </div>
 
+  <div id="sterbModal" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('sternModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Address</p>
+        <p>518 Memorial Way Stanford, CA 94305</p>
+      </div>
+    </div>
+  </div>
+
   <!-- <div id="mcmurtryModal" class="w3-modal">
     <div class="w3-modal-content">
       <div class="w3-container">
@@ -126,6 +136,11 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <div class="w3-col s6">
         <img class="w3-image lathrop" id="myImg" src="brain_folder_locked.png" onclick="password('lathrop')">
       <h2>sent_messages</h2>
+    </div>
+
+    <div class="w3-col s6">
+        <img class="w3-image lathrop" id="myImg" src="brain_folder_locked.png" onclick="password('stern')">
+      <h2>vaccine_code</h2>
     </div>
 
 <!--     <div class="w3-col s6">
@@ -214,18 +229,24 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
   var questions = {
     "lathrop": [{ 
-        question: 'This folder is locked with a password (11 letters long).',
+        question: 'This folder is locked with a password (11 characters, case sensitive).',
         answer: 'whistleblow',
         affirm: 'Folder unlocked!',
         rebuttal: 'Try again.'
     }],
     "crothers": [{ 
-        question: 'This folder is locked with a password.',
-        answer: 'test',
+        question: 'This folder is locked with a password (8 characters, case sensitive).',
+        answer: 'THE TRUTH',
         affirm: 'Folder unlocked!',
         rebuttal: 'Try again.'
     }],
     "bing": [{ 
+        question: 'This folder is locked with a password (10 characters, case sensitive).',
+        answer: 'CONSPIRACY',
+        affirm: 'Folder unlocked!',
+        rebuttal: 'Try again.'
+    }],
+    "stern": [{ 
         question: 'This folder is locked with a password.',
         answer: 'test',
         affirm: 'Folder unlocked!',
