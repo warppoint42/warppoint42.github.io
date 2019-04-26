@@ -41,7 +41,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 </div>
 
 <div class="w3-bar w3-black">
-  <button class="w3-bar-item w3-button" onclick="openTab('Files')">Files</button>
+  <button class="w3-bar-item w3-button" onclick="openTab('Files')">Hacking Module</button>
   <button class="w3-bar-item w3-button" onclick="openTab('Rules')">Rules</button>
   <button class="w3-bar-item w3-button" onclick="openTab('Map')">Game Map</button>
 </div>
@@ -57,12 +57,20 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 <div id="Files" class="w3-container tab" style="margin-top: 35px">
 
-  <div id="lathropModal" class="w3-modal">
+  <div id="lathropLettersModal" class="w3-modal">
     <div class="w3-modal-content">
       <div class="w3-container">
-        <span onclick="document.getElementById('lathropModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-        <p>Address</p>
-        <p>518 Memorial Way Stanford, CA 94305</p>
+        <span onclick="document.getElementById('lathropLettersModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <a href="bit.ly/daily-piece-antibiotic-resistance" target="_blank"><br><h>State_of_Emergency_Declared, Zombies Developing Antibiotic Resistance</h><br></a>
+      </div>
+    </div>
+  </div>
+
+  <div id="serraLettersModal" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('serraLettersModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <a href="https://bearanos.godaddysites.com/" target="_blank"><br><h>Bearanos Website</h><br></a>
       </div>
     </div>
   </div>
@@ -71,18 +79,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <div class="w3-modal-content">
       <div class="w3-container">
         <span onclick="document.getElementById('bingModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-        <p>Address</p>
-        <p>518 Memorial Way Stanford, CA 94305</p>
-      </div>
-    </div>
-  </div>
-
-  <div id="sternModal" class="w3-modal">
-    <div class="w3-modal-content">
-      <div class="w3-container">
-        <span onclick="document.getElementById('sternModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-        <p>Address</p>
-        <p>518 Memorial Way Stanford, CA 94305</p>
+        <a href="https://discord.gg/3MdMUKe" target="_blank"><br><h>BIOE 361 Project Discord</h><br></a>
       </div>
     </div>
   </div>
@@ -91,7 +88,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
     <div class="w3-modal-content">
       <div class="w3-container">
         <span onclick="document.getElementById('crothersModal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-        <a href="https://docs.google.com/document/d/1zcJ6ezPVJwOEOTBflPwLa_D1Iv6ptfBCXfkZUIKulv0/edit?usp=sharing"><br><h>ZAPTACEL Vaccine Rev. G 4/24/19</h><br></a>
+        <a href="https://docs.google.com/document/d/1zcJ6ezPVJwOEOTBflPwLa_D1Iv6ptfBCXfkZUIKulv0/edit?usp=sharing" target="_blank"><br><h>ZAPTACEL Vaccine Rev. G 4/24/19</h><br></a>
       </div>
     </div>
   </div>
@@ -118,23 +115,23 @@ body {font-family: Arial, Helvetica, sans-serif;}
   <div class="w3-row-padding w3-center">
     <div class="w3-col s6">
 
-        <img class="w3-image stern" id="myImg" src="brain_folder_locked.png" onclick="password('stern')">
+        <img class="w3-image crothers" id="myImg" src="brain_folder_locked.png" onclick="password('crothers')">
+      <h3>zaptacel</h2>
+    </div>
+
+    <div class="w3-col s6">
+        <img class="w3-image serraLetters" id="myImg" src="brain_folder_locked.png" onclick="password('serraLetters')">
+      <h3>master_plan</h2>
+    </div>
+
+    <div class="w3-col s6">
+        <img class="w3-image lathropLetters" id="myImg" src="brain_folder_locked.png" onclick="password('lathropLetters')">
       <h3>news</h2>
     </div>
 
     <div class="w3-col s6">
         <img class="w3-image bing" id="myImg" src="brain_folder_locked.png" onclick="password('bing')">
-      <h3>master_plan</h2>
-    </div>
-
-    <div class="w3-col s6">
-        <img class="w3-image lathrop" id="myImg" src="brain_folder_locked.png" onclick="password('lathrop')">
       <h3>saved_msgs</h2>
-    </div>
-
-    <div class="w3-col s6">
-        <img class="w3-image crothers" id="myImg" src="brain_folder_locked.png" onclick="password('crothers')">
-      <h3>zaptacel</h2>
     </div>
 
 <!--     <div class="w3-col s6">
@@ -218,31 +215,31 @@ body {font-family: Arial, Helvetica, sans-serif;}
   document.getElementById(tabName).style.display = "block";  
 }
 
-  var stamps = ['lathrop', 'bing', 'crothers'];
+  var stamps = ['lathropLetters', 'serraLetters', 'bing', 'crothers'];
   var quiz = [false, false, false];
 
   var questions = {
-    "lathrop": [{ 
+    "lathropLetters": [{ 
         question: 'This folder is locked with a password (13 characters including spaces).',
         answer: 'WHISTLEBLOWER',
         affirm: 'Folder unlocked!',
         rebuttal: 'Try again.'
     }],
-    "crothers": [{ 
+    "bing": [{ 
         question: 'This folder is locked with a password (8 characters including spaces).',
         answer: 'THE TRUTH',
         affirm: 'Folder unlocked!',
         rebuttal: 'Try again.'
     }],
-    "bing": [{ 
+    "serraLetters": [{ 
         question: 'This folder is locked with a password (10 characters including spaces).',
         answer: 'CONSPIRACY',
         affirm: 'Folder unlocked!',
         rebuttal: 'Try again.'
     }],
-    "stern": [{ 
-        question: 'This folder is locked with a password.',
-        answer: 'IMMUNITY',
+    "crothers": [{ 
+        question: 'This folder is locked with a password (14 characters including spaces).',
+        answer: 'DESIGNER GENES',
         affirm: 'Folder unlocked!',
         rebuttal: 'Try again.'
     }],
